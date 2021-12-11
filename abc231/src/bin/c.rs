@@ -1,14 +1,16 @@
-use proconio::input;
+use proconio::*;
+#[fastout]
 fn main() {
     input! {
         n:usize,
         q:usize,
         mut a: [i32; n],
-        mut x: [i32; q],
+        x: [i32; q],
     }
-    for i in 0..q {
-        println!("{}",a.iter().enumerate().filter(|&(_, &v)| v >= x[i]).count());
-        }
+    a.sort();
+    for xi in x {
+        println!("{}", n - a.binary_search(&xi).unwrap_or_else(|i| i));
+    }
 }
 
 // use proconio::input;
