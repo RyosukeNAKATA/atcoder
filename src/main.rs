@@ -5,9 +5,22 @@ use proconio::{fastout,input};
 #[fastout]
 fn main() {
     input! {
-        s: Bytes,
+        mut x: i32,
+        y: i32,
     }
-    println!("{}", (s[0] as i32 -48)*(s[2] as i32 - 48));
+    if x >= y {
+        println!("{}", 0);
+    } else {
+        let mut counter = 0;
+        loop {
+            counter += 1;
+            x += 10;
+            if x >= y {
+                println!("{}", counter);
+                break;
+            }
+        }
+    }
 }
 
 // B
@@ -17,71 +30,52 @@ fn main() {
 // #[fastout]
 // fn main() {
 //     input! {
-//         mut s: Bytes,
-//         t: Bytes,
+//         l: usize,
+//         r: usize,
+//         s: Chars,
 //     }
 
-//     let mut flag = false;
-//     let length = s.len();
-
-//     for i in 0..26 {
-//         let mut tmp = Vec::new();
-//         let mut min_flag = 0;
-//         for j in 0..length {
-//             if s[j] + i as u8 >= 123 {
-//                 tmp.push(s[j] + i as u8 - 26);
-//             } else {
-//                 tmp.push(s[j] + i as u8);
-//             }
-//             if tmp[j] == t[j] {
-//                 min_flag += 1;
-//             } else {
-//                 continue;
-//             }
-//         }
-//         if min_flag == length {
-//             flag = true;
-//             break;
-//         }
-//     }
-
-//     if flag {
-//         println!("Yes");
-//     } else {
-//         println!("No");
-//     }
+//     let mut start = Vec::new();
+//     let mut end = Vec::new();
+//     let mut tmp = Vec::new();
+//     for i in 0..s.len() {
+//         if i < l - 1 {
+//             start.push(s[i]);
+//         } else if r <= i {
+//             end.push(s[i]);
+//         }else  {
+//             tmp.push(s[i]);
+//         } }
+//     tmp.reverse();
+//     println!("{}{}{}", start.iter().collect::<String>(),tmp.iter().collect::<String>(),end.iter().collect::<String>());
 // }
 
 // C
-// use proconio::marker::{Bytes, Chars};
-// use proconio::{fastout,input};
+// use proconio::marker::{Bytes, Chars, Usize1};
+// use proconio::*;
+// use superslice::Ext;
 
 // #[fastout]
 // fn main() {
 //     input! {
-//         n:usize,
-//         m:usize,
-//         mut mat: [[usize; 2]; m * 2],
+//         n: usize,
+//         x: i64,
 //     }
-//     let mut a = Vec::new();
-//     let mut b = Vec::new();
-//     let mut c = Vec::new();
-//     let mut d = Vec::new();
-//     for i in 0..m{
-//         a.push(mat[i][0]);
-//         b.push(mat[i][1]);
+//     let mut l = Vec::new();
+//     let mut ball = Vec::new();
+//     for _ in 0..n {
+//         input! {
+//             a: i64,
+//         }
+//         l.push(a);
+//         input! {
+//             b: [i64; a],
+//         }
+//         b.sort();
+//         b.dedup();
+//         ball.push(b);
 //     }
-//     for i in 0..m{
-//         c.push(mat[i + m][0]);
-//         d.push(mat[i + m][1]);
-//     }
-//     let mut flag = false;
 
-
-
-//     if flag {
-//         println!("Yes");
-//     } else {
-//         println!("No");
-//     }
+//     let mut ans = 0;
+//     println!("{:?}", ball);
 // }
