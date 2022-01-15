@@ -1,17 +1,20 @@
 // A
-use proconio::marker::{Bytes, Chars};
-use proconio::{fastout,input};
+// use proconio::marker::{Bytes, Chars};
+// use proconio::{fastout,input};
 
-#[fastout]
-fn main() {
-    input! {
-        t: i32
-    }
-    fn f(x: i32)->i32{
-        x*x + 2 * x + 3
-    }
-    println!("{}",f(f(f(t)+t)+f(f(t))));
-}
+// #[fastout]
+// fn main() {
+//     input! {
+//         abc: Bytes
+//     }
+//     let a = abc[0] as i32 -48;
+//     let b = abc[1] as i32 -48;
+//     let c = abc[2] as i32 -48;
+//     let abc = 100 * a + 10 * b + c;
+//     let bca = 100 * b + 10 * c + a;
+//     let cba = 100 * c + 10 * a + b;
+//     println!("{}",abc+bca+cba);
+// }
 
 // B
 // use proconio::marker::{Bytes, Chars};
@@ -22,44 +25,59 @@ fn main() {
 // fn main() {
 //     input! {
 //         n: usize,
-//         mut mat: [[f64; 2]; n],
+//         mut h: [i32; n],
 //     }
-//     let mut ans = Vec::new();
-//     fn get_dist(x1: f64, y1: f64, x2: f64, y2: f64) -> f64 {
-//         (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)
+//     let mut stand = 0;
+//     for i in 0..n {
+//         if stand >= h[i] {
+//             break;
+//         }
+//         stand = h[i];
 //     }
-//     // nC2
-//     for perm in (0..n).combinations(2) {
-//         let p1 = perm[0];
-//         let p2 = perm[1];
-//         ans.push(get_dist(mat[p1][0], mat[p1][1], mat[p2][0], mat[p2][1]));
-//     }
-//     let mut tmp = ans.iter().fold(0.0/0.0, |m, v| v.max(m));
-//     let tmp = tmp.sqrt();
-//     println!("{}", tmp);
+//     println!("{}", stand);
 // }
 
 // C
 // use proconio::marker::{Bytes, Chars, Usize1};
 // use proconio::*;
+// use std::collections::HashMap;
 
 // #[fastout]
 // fn main() {
 //     input! {
-//         k: usize,
+//         n: usize,
+//         q: usize,
+//         a: [i32; n],
+//         mut queries: [[i32; 2]; q],
 //     }
-//     fn base_10_to_2(k: u64) -> String {
-//         let mut binary = String::new();
-//         let mut i = k;
-//         while i > 0 {
-//             binary.push_str(&format!("{}", i % 2));
-//             i /= 2;
+//     let mut ans = vec![-1; q];
+//     let mut hashmap: HashMap<i32, Vec<i32>> = HashMap::new();
+//     for i in 0..a.len() {
+//         if hashmap.contains_key(&a[i]) {
+//             hashmap.get_mut(&a[i]).unwrap().insert(0, i as i32+1);
+//         } else {
+//             hashmap.insert(a[i], vec![i as i32 +1]);
 //         }
-//         binary.chars().rev().collect()
 //     }
-//     // Decimal number to Binary number
-//     let ans = base_10_to_2(k as u64);
-//     println!("{}", ans.replace("1", "2"));
+
+//     for i in 0..q {
+//         if !hashmap.contains_key(&queries[i][0]) {
+//             break;
+//         } else {
+//             let x = queries[i][0];
+//             let k = queries[i][1];
+//             let tmp = hashmap.get(&x).unwrap().len() as i32;
+//             if k > tmp {
+//                 ans[i] = -1;
+//             } else {
+//                 ans[i] = hashmap.get(&x).unwrap()[tmp as usize - k as usize];
+//             }
+//         }
+//     }
+
+//     for i in &ans[..] {
+//         println!("{}", *i);
+//     }
 // }
 
 // D
