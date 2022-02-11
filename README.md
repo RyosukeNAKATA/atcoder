@@ -1,4 +1,4 @@
-# atcoder
+# Typical90 Notes
 
 | id | Title(diff) |  Note |
 | -- | -- | -- |
