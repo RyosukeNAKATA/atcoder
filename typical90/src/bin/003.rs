@@ -6,15 +6,23 @@ use std::collections::VecDeque;
 fn main() {
     input! {
         n: usize,
-        graph: [[Usize1; 2]; n],
+    }
+    let mut graph = vec![vec![]; n];
+    for _ in 1..n {
+        input! {
+            x:Usize1,
+            y:Usize1,
+        }
+        graph[x].push(y);
+        graph[y].push(x);
     }
     let mut depth = vec![1 << 30; n];
-    breadth_first_search(&graph, &mut depth, 0);
+    breadth_first_search(&graph, &mut depth, 0usize);
     let mut u = 0;
     let m = depth.iter().max().unwrap();
     for i in 0..n {
         if &depth[i] == m {
-            u == i;
+            u = i
         }
     }
     let mut depth = vec![1 << 30; n];
