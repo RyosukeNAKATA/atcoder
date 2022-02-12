@@ -1,7 +1,6 @@
 # Template for compete.toml
 
 ```
-
 [template]
 src = '''
 use proconio::marker::{Bytes, Chars, Usize1};
@@ -14,8 +13,6 @@ fn main() {
 
 [test]
 toolchain = ""
-
-
 ```
 
 
