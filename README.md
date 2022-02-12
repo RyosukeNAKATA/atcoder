@@ -1,3 +1,9 @@
+# Typical90(GitHub)
+
+ - Official Page([AtCoder](https://atcoder.jp/contests/typical90/))
+ - List of problems([AtCoder](https://atcoder.jp/contests/typical90/tasks))
+ - Spread Sheet([Link](https://docs.google.com/spreadsheets/d/1GG4Higis4n4GJBViVltjcbuNfyr31PzUY_ZY1zh2GuI/edit#gid=1593175261))
+
 # Template for compete.toml
 
 ```
