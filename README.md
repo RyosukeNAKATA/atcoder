@@ -23,3 +23,4 @@ toolchain = ""
 | 001 | Yokan Party(4) | Binary search & Greedy from left |
 | 002 | Encyclopedia of Parentheses(3) | Bit Brute-force search |
 | 003 | Longest Circular Road(4) | Breadth First Search |
+| 004 | Cross Sum(2) | Data Preprocessing |
