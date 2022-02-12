@@ -1,4 +1,4 @@
-# Typical90(GitHub)
+# Typical90
 
  - Official Page([AtCoder](https://atcoder.jp/contests/typical90/))
  - List of problems([AtCoder](https://atcoder.jp/contests/typical90/tasks))
