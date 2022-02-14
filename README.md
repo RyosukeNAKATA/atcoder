@@ -31,3 +31,4 @@ toolchain = ""
 | 003 | Longest Circular Road(4) | Breadth First Search |
 | 004 | Cross Sum(2) | Data Preprocessing |
 | 005 | Restricted Digits(7) | SKIP |
+| 006 | Smallest Subsequence(5) | Greedy |
