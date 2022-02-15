@@ -32,4 +32,5 @@ toolchain = ""
 | 004 | Cross Sum(2) | Data Preprocessing |
 | 005 | Restricted Digits(7) | SKIP |
 | 006 | Smallest Subsequence(5) | Greedy |
-| 007 | Smallest Subsequence(3) | Binary Search |
+| 007 | CP Classes(3) | Binary Search |
+| 008 | AtCounter(4) | Dynamic Programming |
