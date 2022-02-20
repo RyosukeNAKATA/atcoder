@@ -4,34 +4,23 @@ use proconio::{fastout, input};
 fn main() {
     input! {
         n: usize,
-        x: u64,
+        x: usize,
+        ab: [(usize, usize); n],
     };
-    let mut a = vec![];
-    let mut b = vec![];
-    for _ in 0..n {
-        input! {
-            _a: u64,
-            _b: u64,
-        };
-        a.push(_a);
-        b.push(_b);
-    }
-    for bit in 0..(1 << n) {
-        let mut tmp_sum = 0_u64;
-        for i in 0..n {
-            if (bit >> i & 1) == 1 {
-                tmp_sum += a[i];
-            } else {
-                tmp_sum += b[i];
-            }
-            if tmp_sum > x {
-                continue;
+    let mut dp = vec![false; 10_001];
+    dp[0] = true;
+    for &(a, b) in &ab {
+        for i in (0..=x).rev() {
+            if dp[i] {
+                dp[i + a] = true;
+                dp[i + b] = true;
+                dp[i] = false;
             }
         }
-        if tmp_sum == x {
-            println!("Yes");
-            return;
-        }
     }
-    println!("No");
+    if dp[x] {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
