@@ -27,23 +27,15 @@ fn main() {
         *counter += 1;
     }
 
-    let mut flag = true;
-
     for i in 0..n {
         if first_name[i] == family_name[i] {
             if hash_map[&first_name[i]] > 2 {
-                flag = false;
-                break;
+                return println!("No");
             }
         } else if hash_map[&first_name[i]] > 1 && hash_map[&family_name[i]] > 1 {
-            flag = false;
-            break;
+            return println!("No");
         }
     }
 
-    if flag {
-        println!("Yes");
-    } else {
-        println!("No");
-    }
+    println!("Yes");
 }
