@@ -24,16 +24,15 @@ fn main() {
             }
 
             let mut sum = 0;
-            while c > 0 {
+            loop {
                 let (x, k) = vecdeq.pop_front().unwrap();
-                if k < c {
-                    sum += x * k;
-                    c -= k;
-                } else {
-                    vecdeq.push_front((x, k - c));
+                if c <= k {
                     sum += x * c;
-                    c = 0;
+                    vecdeq.push_front((x, k - c));
+                    break;
                 }
+                c -= k;
+                sum += x * k;
             }
             println!("{}", sum);
         }
