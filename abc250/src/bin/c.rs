@@ -1,6 +1,6 @@
+use itertools::Itertools;
 use proconio::marker::{Bytes, Chars, Usize1};
 use proconio::{fastout, input};
-use std::collections::HashMap;
 #[fastout]
 fn main() {
     input! {
@@ -8,46 +8,13 @@ fn main() {
         q: usize,
         x: [usize; q],
     }
-    let mut answer = vec![0; n];
-    for i in 0..n {
-        answer[i] = i + 1;
+    let mut answer = (0..n).collect_vec();
+    let mut index = (0..n).collect_vec();
+    for qx in x {
+        let i = index[qx - 1];
+        let j = if i < n - 1 { i + 1 } else { i - 1 };
+        answer.swap(i, j);
+        index.swap(answer[i], answer[j]);
     }
-
-    let mut hashmap = HashMap::new();
-    for i in 0..n {
-        let res = answer[i];
-        let counter = hashmap.entry(res).or_insert(0);
-        *counter = i;
-    }
-    //println!("{:?}", hashmap);
-
-    for i in 0..q {
-        let xq = x[i];
-        let mut index = hashmap.get(&xq).unwrap();
-        if *index == n - 1 {
-            let tmp = *index;
-        }
-    }
-
-    //for i in 0..q {
-    //    let xq = x[i];
-    //    let index = answer.iter().position(|a| a == &xq).unwrap();
-    //    if index == n - 1 {
-    //        let tmp = answer[index];
-    //        answer[index] = answer[index - 1];
-    //        answer[index - 1] = tmp;
-    //    } else {
-    //        let tmp = answer[index];
-    //        answer[index] = answer[index + 1];
-    //        answer[index + 1] = tmp;
-    //    }
-    //}
-
-    for i in 0..n {
-        if i == n - 1 {
-            println!("{}", answer[i]);
-        } else {
-            print!("{} ", answer[i]);
-        }
-    }
+    println!("{}", answer.iter().map(|&x| x + 1).join(" "));
 }
