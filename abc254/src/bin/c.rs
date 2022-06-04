@@ -7,16 +7,23 @@ fn main() {
         k: usize,
         mut a: [i32; n],
     }
-    let mut model = a.clone();
-    model.sort();
-
-    for i in 0..n - k {
-        if a[i] > a[i + k] {
-            a.swap(i, i + k);
+    let mut ans = vec![0; n];
+    for i in 0..k {
+        let mut tmp = vec![];
+        for j in (i..n).step_by(k) {
+            tmp.push((a[j], j));
         }
-        if model == a {
-            return println!("Yes");
+        tmp.sort();
+        let mut j = i;
+        for &(t, _) in tmp.iter() {
+            ans[j] = t;
+            j += k;
         }
     }
-    println!("No");
+    a.sort();
+    if ans == a {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
