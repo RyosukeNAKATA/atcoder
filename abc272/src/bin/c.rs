@@ -1,27 +1,34 @@
-use proconio::marker::{Bytes, Chars, Usize1};
-use proconio::{fastout,input};
 use itertools::Itertools;
+use proconio::marker::{Bytes, Chars, Usize1};
+use proconio::{fastout, input};
 #[fastout]
 fn main() {
-	input!{
+    input! {
         n: usize,
         mut a: [i32; n],
     }
-    if a.len() == 2 && (a[0] + a[1]) % 2 == 1 {
-        return println!("-1");
-    }
     a.sort();
     a.reverse();
-    let mut ans = vec![];
-    for comb in a.iter().combinations(2) {
-        let b = comb[0] + comb[1];
-        ans.push(b);
-    }
-    ans.sort();
-    ans.reverse();
-    for i in ans.iter() {
-        if i % 2 == 0 {
-            return println!("{}", i);
+    let mut odd_nums = vec![];
+    let mut even_nums = vec![];
+    for i in 0..n {
+        if a[i] % 2 == 0 {
+            even_nums.push(a[i]);
+        } else {
+            odd_nums.push(a[i]);
         }
     }
+    odd_nums.sort();
+    odd_nums.reverse();
+    even_nums.sort();
+    even_nums.reverse();
+
+    let mut ans = -1;
+    if 2 <= odd_nums.len() {
+        ans = ans.max(odd_nums[0] + odd_nums[1]);
+    }
+    if 2 <= even_nums.len() {
+        ans = ans.max(even_nums[0] + even_nums[1]);
+    }
+    println!("{}", ans);
 }

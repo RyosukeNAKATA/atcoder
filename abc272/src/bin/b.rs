@@ -1,17 +1,17 @@
-use proconio::marker::{Bytes, Chars, Usize1};
-use proconio::{fastout,input};
-use std::collections::HashSet;
 use itertools::Itertools;
+use proconio::marker::{Bytes, Chars, Usize1};
+use proconio::{fastout, input};
+use std::collections::HashSet;
 #[fastout]
 fn main() {
-	input!{
+    input! {
         n: usize,
         m: usize,
     }
     let mut k: Vec<usize> = vec![];
     let mut x: Vec<Vec<i32>> = vec![];
     for _ in 0..m {
-        input!{
+        input! {
             _k: usize,
             _x: [i32; _k],
         }
@@ -24,7 +24,7 @@ fn main() {
             set.insert(perm);
         }
     }
-    let ans = n * (n-1) / 2;
+    let ans = n * (n - 1) / 2;
     if ans == set.len() / 2 {
         println!("Yes");
     } else {
